@@ -1,0 +1,4 @@
+name: Rarity
+version: '${project.version}'
+main: me.lished.rarity.Rarity
+api-version: '1.20'
