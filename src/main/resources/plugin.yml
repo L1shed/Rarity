@@ -1,4 +1,8 @@
 name: Rarity
 version: '${project.version}'
-main: me.lished.rarity.Rarity
+main: me.lished.rarity.RarityPlugin
 api-version: '1.20'
+libraries:
+  - org.jetbrains.kotlin:kotlin-maven-plugin:1.9.22
+commands:
+  rarity:

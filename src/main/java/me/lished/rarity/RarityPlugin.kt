@@ -1,5 +1,6 @@
 package me.lished.rarity
 
+import me.lished.rarity.commands.RarityCommand
 import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -7,13 +8,14 @@ import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
-class Rarity : JavaPlugin() {
+class RarityPlugin : JavaPlugin() {
     data class Rarity(val id: String, val items: List<String>, val display: String)
 
-    private val rarities = mutableMapOf<String, Rarity>()
+    public val rarities = mutableMapOf<String, Rarity>()
 
     override fun onEnable() {
         loadRarities()
+        getCommand("rarity")!!.setExecutor(RarityCommand())
     }
 
     private fun loadRarities() {
