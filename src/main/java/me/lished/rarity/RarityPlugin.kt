@@ -1,5 +1,6 @@
+package me.lished.rarity
+
 import org.bukkit.ChatColor
-import org.bukkit.Material
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.configuration.file.YamlConfiguration
@@ -14,10 +15,6 @@ class RarityPlugin : JavaPlugin() {
 
     override fun onEnable() {
         loadRarities()
-    }
-
-    override fun onDisable() {
-        // Plugin shutdown logic
     }
 
     private fun loadRarities() {
@@ -35,10 +32,13 @@ class RarityPlugin : JavaPlugin() {
             val items = config.getStringList("$rarityPath.items")
             val display = config.getString("$rarityPath.display")
 
+            logger.info(rarityPath + rarityId + items + display)
+
             if (display != null) {
                 rarities[rarityId] = Rarity(rarityId, items, ChatColor.translateAlternateColorCodes('&', display))
+                logger.info("Loaded rarity $rarityId with items: $items")
             } else {
-                logger.warning("Missing data for rarity $rarityId")
+                logger.warning("Missing display for rarity $rarityId")
             }
         }
 
@@ -55,6 +55,7 @@ class RarityPlugin : JavaPlugin() {
             val itemId = args[0].lowercase()
 
             val rarity = rarities.values.find { it.items.contains(itemId) }
+            logger.info(rarities.values.toString())
             if (rarity != null) {
                 sender.sendMessage("${ChatColor.GREEN}${itemId.capitalize()} is ${rarity.display}")
             } else {

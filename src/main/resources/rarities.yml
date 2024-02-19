@@ -1,0 +1,8 @@
+rarities:
+  - id: common
+    items: [ ]
+    display: "&a&lCOMMON"
+  - id: uncommon
+    items:
+      - diamond_pickaxe
+    display: "&e&lUNCOMMON"
