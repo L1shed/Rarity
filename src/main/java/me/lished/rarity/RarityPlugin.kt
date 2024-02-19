@@ -33,6 +33,7 @@ class RarityPlugin : JavaPlugin() {
             val display = config.getString("$rarityPath.display")
 
             logger.info(rarityPath + rarityId + items + display)
+            logger.info("cacao")
 
             if (display != null) {
                 rarities[rarityId] = Rarity(rarityId, items, ChatColor.translateAlternateColorCodes('&', display))
