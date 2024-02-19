@@ -1,3 +1,5 @@
+# If enabled, it will use the Minecraft vanilla rarities
+use-default: true
 rarities:
   - id: common
     items: [ ]
