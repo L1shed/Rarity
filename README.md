@@ -1,2 +1,2 @@
 # Rarity
-A Minecraft plugin to display items rarity. written in kotlin and fully customizable
+A Minecraft plugin to display items rarity. Written in kotlin and fully customizable
