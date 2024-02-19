@@ -27,35 +27,6 @@ class RarityPlugin : JavaPlugin() {
 
         val config = YamlConfiguration.loadConfiguration(configFile)
 
-        /*val raritiesSection = config.getConfigurationSection("rarities")
-        if (raritiesSection != null) {
-            logger.info("Found 'rarities' configuration section.")
-//            val rarityKeys = raritiesSection.getKeys(false)
-            val rarityKeys = config.get("rarities")
-            logger.info("Keys found under 'rarities': $rarityKeys")
-        } else {
-            logger.warning("No 'rarities' configuration section found.")
-        }
-
-
-        config.getConfigurationSection("rarities")?.getKeys(false)?.forEach { rarityId ->
-            val rarityPath = "rarities.$rarityId"
-            val items = config.getStringList("$rarityPath.items")
-            val display = config.getString("$rarityPath.display")
-
-            logger.info(rarityPath + rarityId + items + display)
-            logger.info("cacao")
-
-            if (display != null) {
-                rarities[rarityId] = Rarity(rarityId, items, ChatColor.translateAlternateColorCodes('&', display))
-                logger.info("Loaded rarity $rarityId with items: $items")
-            } else {
-                logger.warning("Missing display for rarity $rarityId")
-            }
-        }
-
-        logger.info("Rarities loaded successfully.")*/
-
         val raritiesSection = config.get("rarities")
         if (raritiesSection is List<*>) {
             raritiesSection.forEach { rarityData ->
