@@ -37,7 +37,6 @@ class RarityPlugin : JavaPlugin() {
 
                     if (rarityId != null && display != null) {
                         rarities[rarityId] = Rarity(rarityId, items ?: emptyList(), ChatColor.translateAlternateColorCodes('&', display))
-                        logger.info("Loaded rarity $rarityId with items: $items")
                     } else {
                         logger.warning("Missing data for rarity: $rarityData")
                     }
@@ -54,8 +53,6 @@ class RarityPlugin : JavaPlugin() {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (command.name.equals("rarity", ignoreCase = true)) {
-            loadRarities()
-
             if (args.isEmpty()) {
                 sender.sendMessage(ChatColor.RED.toString() + "Usage: /rarity <item>")
                 return true
@@ -64,7 +61,7 @@ class RarityPlugin : JavaPlugin() {
             val itemId = args[0].lowercase()
 
             val rarity = rarities.values.find { it.items.contains(itemId) }
-            logger.info(rarities.values.toString())
+
             if (rarity != null) {
                 sender.sendMessage("${ChatColor.GREEN}${itemId.capitalize()} is ${rarity.display}")
             } else {
