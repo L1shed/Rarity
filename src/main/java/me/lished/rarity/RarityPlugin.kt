@@ -55,11 +55,13 @@ class RarityPlugin : JavaPlugin() {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (command.name.equals("rarity", ignoreCase = true)) {
             val player = sender as Player
+            val itemId: String
             if(args.isEmpty()) {
-                player.
+                player.sendMessage(player.inventory.itemInMainHand.rarity.name)
+                itemId = player.inventory.itemInMainHand.type.name.toLowerCase().replace("_", " ")
+            } else {
+                itemId = args[0].lowercase()
             }
-
-            val itemId = args[0].lowercase()
 
             val rarity = rarities.values.find { it.items.contains(itemId) }
 
