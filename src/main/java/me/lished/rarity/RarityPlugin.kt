@@ -4,6 +4,7 @@ import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
@@ -53,9 +54,9 @@ class RarityPlugin : JavaPlugin() {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (command.name.equals("rarity", ignoreCase = true)) {
-            if (args.isEmpty()) {
-                sender.sendMessage(ChatColor.RED.toString() + "Usage: /rarity <item>")
-                return true
+            val player = sender as Player
+            if(args.isEmpty()) {
+                player.
             }
 
             val itemId = args[0].lowercase()
@@ -63,9 +64,9 @@ class RarityPlugin : JavaPlugin() {
             val rarity = rarities.values.find { it.items.contains(itemId) }
 
             if (rarity != null) {
-                sender.sendMessage("${ChatColor.GREEN}${itemId.capitalize()} is ${rarity.display}")
+                player.sendMessage("$itemId is ${rarity.display}")
             } else {
-                sender.sendMessage("${ChatColor.RED}Rarity not found for $itemId")
+                player.sendMessage("Rarity not found for $itemId")
             }
 
             return true
