@@ -17,12 +17,13 @@ class RarityPlugin : JavaPlugin() {
     private val rarities = mutableMapOf<String, Rarity>()
 
     override fun onEnable() {
+        saveConfig()
         loadRarities()
         Bukkit.getPluginManager().registerEvents(RarityListener(), this)
     }
 
     private fun loadRarities() {
-        val configFile = File(dataFolder, "rarities.yml")
+        val configFile = File(dataFolder, "config.yml")
 
         if (!configFile.exists()) {
             logger.warning("Config file not found!")
