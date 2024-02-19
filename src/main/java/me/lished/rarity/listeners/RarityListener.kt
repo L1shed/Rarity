@@ -17,7 +17,7 @@ class RarityListener : Listener {
             val item = e.currentItem
 
             if (item != null && item.type != Material.AIR && item.lore() == null) {
-                item.lore(listOf(Component.text("§r "), Component.text(item.rarity.name, TextColor.color(item.rarity.color)).decorate(TextDecoration.BOLD)))
+                item.lore(listOf(Component.text(""), Component.text("§r"+item.rarity.name, TextColor.color(item.rarity.color)).decorate(TextDecoration.BOLD)))
             }
         }
     }
