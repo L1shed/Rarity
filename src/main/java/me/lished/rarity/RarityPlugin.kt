@@ -35,7 +35,7 @@ class RarityPlugin : JavaPlugin() {
             val items = config.getStringList("$rarityPath.items")
             val display = config.getString("$rarityPath.display")
 
-            if (items != null && display != null) {
+            if (display != null) {
                 rarities[rarityId] = Rarity(rarityId, items, ChatColor.translateAlternateColorCodes('&', display))
             } else {
                 logger.warning("Missing data for rarity $rarityId")
