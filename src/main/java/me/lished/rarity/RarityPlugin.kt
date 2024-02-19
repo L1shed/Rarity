@@ -1,5 +1,7 @@
 package me.lished.rarity
 
+import me.lished.rarity.listeners.RarityListener
+import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -16,6 +18,7 @@ class RarityPlugin : JavaPlugin() {
 
     override fun onEnable() {
         loadRarities()
+        Bukkit.getPluginManager().registerEvents(RarityListener(), this)
     }
 
     private fun loadRarities() {
